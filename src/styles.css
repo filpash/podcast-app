@@ -46,4 +46,8 @@ button {
     #content {
         margin-left: 180px;
     }
+
+    .author {
+        font-size: 60%;
+    }
 }
