@@ -2,6 +2,7 @@ import {Question} from "./question";
 import {createModal, isValid} from "./utils"
 import './styles.css'
 import {getAuthForm} from "./auth";
+import {authWithEmailAndPassword} from "./auth"
 
 const form = document.getElementById('form')
 const modalBtn = document.getElementById('modal-btn')
@@ -46,4 +47,12 @@ function authFormHandler(event) {
 
     const email = event.target.querySelector('#email').value
     const password = event.target.querySelector('#password').value
+
+    authWithEmailAndPassword(email, password)
+        .then(Question.fetch)
+        .then(renderModalAfterAuth)
+}
+
+function renderModalAfterAuth(content) {
+
 }
