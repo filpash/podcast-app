@@ -57,5 +57,9 @@ function authFormHandler(event) {
 }
 
 function renderModalAfterAuth(content) {
-    console.log('Content', content)
+    if (typeof content === 'string') {
+        createModal('Ошибка!', content)
+    } else {
+        createModal('Список вопросов', Question.listToHTML(content))
+    }
 }
