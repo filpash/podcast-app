@@ -1,6 +1,7 @@
 import {Question} from "./question";
 import {createModal, isValid} from "./utils"
 import './styles.css'
+import {getAuthForm} from "./auth";
 
 const form = document.getElementById('form')
 const modalBtn = document.getElementById('modal-btn')
@@ -34,5 +35,15 @@ function submitFormHandler(event) {
 }
 
 function openModal() {
-    createModal('Авторизация', '<h1>Test</h1>')
+    createModal('Авторизация', getAuthForm())
+    document
+        .getElementById('auth-form')
+        .addEventListener('submit', authFormHandler, {once: true})
+}
+
+function authFormHandler(event) {
+    event.preventDefault()
+
+    const email = event.target.querySelector('#email').value
+    const password = event.target.querySelector('#password').value
 }
